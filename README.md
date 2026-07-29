@@ -9,11 +9,56 @@ Automatiza la aprobación de solicitudes recibidas desde Google Forms:
 
 La credencial vence el 31 de marzo siguiente. Por ejemplo, una solicitud aprobada desde el 31/03/2026 hasta el 30/03/2027 vence el 31/03/2027.
 
+## Índice
+
+- [Archivos](#archivos)
+- [Carga manual](#carga-manual)
+- [Campos del formulario](#campos-del-formulario)
+- [Instalación en otra cuenta o formulario](#instalación-en-otra-cuenta-o-formulario)
+- [Cambiar correos y mensajes](#cambiar-correos-y-mensajes)
+- [Reutilizar el sistema](#reutilizar-el-sistema)
+
 ## Archivos
 
 - `Codigo.gs`: sistema completo y configuración.
 - `appsscript.json`: permisos necesarios para Apps Script.
 - `credencial-base.png`: plantilla sin datos personales.
+- `carga-manual/`: programa para generar una credencial ingresando los datos manualmente.
+
+## Carga manual
+
+Esta opción permite generar una credencial sin completar el formulario ni enviar correos. Solicita:
+
+- nombre y apellido;
+- DNI;
+- fecha de vencimiento;
+- cargo: Estudiante, Docente o Nodocente.
+
+El programa ajusta automáticamente el tamaño del nombre, permite hasta dos líneas para nombres extensos, formatea el DNI con puntos y genera el PNG en alta resolución.
+
+### Primera ejecución en Windows
+
+1. Instalá [Python 3](https://www.python.org/downloads/) si todavía no está instalado. Durante la instalación activá **Add Python to PATH**.
+2. Abrí la carpeta `carga-manual`.
+3. Hacé doble clic en `iniciar.bat`.
+4. La primera vez se instalará automáticamente el componente Pillow.
+5. Ingresá los datos que muestra la ventana.
+
+La imagen se guardará en:
+
+```text
+carga-manual/credenciales-generadas/
+```
+
+Esa carpeta está excluida de Git porque las imágenes contienen datos personales.
+
+También se puede ejecutar desde PowerShell:
+
+```powershell
+cd carga-manual
+python -m pip install -r requirements.txt
+python generar_credencial.py
+```
 
 ## Campos del formulario
 

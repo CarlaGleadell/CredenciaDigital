@@ -1,0 +1,6 @@
+# Las credenciales generadas contienen datos personales y no deben subirse.
+carga-manual/credenciales-generadas/
+
+# Archivos temporales creados por Python.
+__pycache__/
+*.pyc
